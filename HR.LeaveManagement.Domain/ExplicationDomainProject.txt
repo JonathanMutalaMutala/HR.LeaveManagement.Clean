@@ -1,0 +1,5 @@
+﻿HR.LeaveManagement.Domain 
+
+Dans L'architecture Clean 
+
+Ce project contient toutes les class entités qu'on va utiliser tout au long du project 
