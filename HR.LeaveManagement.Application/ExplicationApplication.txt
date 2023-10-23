@@ -1,0 +1,3 @@
+﻿Cette couche permet de faire la gestion de interfaces 
+
+Ici il est question d'implementer les operations que chacun des entité creer dans le Domain Layout doit faire 
