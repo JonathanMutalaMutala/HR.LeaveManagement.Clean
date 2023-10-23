@@ -3,3 +3,7 @@
 Dans L'architecture Clean 
 
 Ce project contient toutes les class entités qu'on va utiliser tout au long du project 
+
+Le fichier Common permet de creer une classe Abstract pour ecrire tout ce qui se repete au classe Enfant 
+
+par exemple pour les 3 Classes j'ai Qui ont tous un Id je cree une BaseEntity qui prendra juste L'id et sera le parent de me 3 class créees

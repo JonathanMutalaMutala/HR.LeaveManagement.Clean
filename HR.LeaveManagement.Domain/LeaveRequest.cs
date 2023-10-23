@@ -1,15 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using HR.LeaveManagement.Domain.Common;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HR.LeaveManagement.Domain
 {
-    public class LeaveRequest
+    public class LeaveRequest : BaseEntity
     {
-        public int Id { get; set; }
+     
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
         [ForeignKey("LeaveTypeId")]
-        public LeaveType LeaveType { get; set; }
+        public LeaveType? LeaveType { get; set; }
         public int LeaveTypeId { get; set; }
 
         public DateTime DateRequested { get; set; }
@@ -18,7 +19,7 @@ namespace HR.LeaveManagement.Domain
         public bool? Approved { get; set; }
         public bool? Cancelled { get; set; }
 
-        public string RequestingEmployedId { get; set; }
+        public string RequestingEmployedId { get; set; } = string.Empty;
 
     }
 }
