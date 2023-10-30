@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HR.LeaveManagement.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,8 @@ namespace HR.LeaveManagement.Application.MappingProfiles
     {
         public LeaveTypeProfile()
         {
-            CreateMap<LeaveTypeDto, LeaveTypeProfile>().ReverseMap();
+            //Je peux faire les mappages dans le deux sens de mon Dto à mon Entity ou de mon Entity à mon Dto
+            CreateMap<LeaveTypeDto, LeaveType>().ReverseMap();
         }
     }
 }
