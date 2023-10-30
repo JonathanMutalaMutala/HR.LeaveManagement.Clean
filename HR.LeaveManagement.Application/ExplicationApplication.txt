@@ -1,3 +1,9 @@
 ﻿Cette couche permet de faire la gestion de interfaces 
 
 Ici il est question d'implementer les operations que chacun des entité creer dans le Domain Layout doit faire 
+
+AutoMapper me permet de faire la gestion des data bind  
+Dans un monde ideale Lorsque l'utilisateur fait une demande au niveau de la base de donnée il fait une demande 
+avec un ViewModel ou un DTo defois on peut juste faire bind manuellement avec notre Entity directement cela deviens long 
+
+AutoMapper facilite cette tache.
