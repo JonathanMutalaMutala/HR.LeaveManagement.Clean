@@ -11,7 +11,7 @@
         /// Permet de récupérer toutes les entités
         /// </summary>
         /// <returns></returns>
-        Task<T> GetAsync();
+        Task<List<T>> GetAsync();
 
         /// <summary>
         /// Permet de récupérer une entité par son Id
