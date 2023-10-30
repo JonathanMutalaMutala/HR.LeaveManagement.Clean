@@ -19,7 +19,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Commands.CreateLeave
         {
 
 
-            //Convert to domain entity object 
+            //Convertir to domain entity object 
             var leaveTypeToCreate = _mapper.Map<Domain.LeaveType>(request);
 
 
