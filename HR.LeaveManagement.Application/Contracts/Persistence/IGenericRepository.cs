@@ -1,10 +1,12 @@
-﻿namespace HR.LeaveManagement.Application.Contracts.Persistence
+﻿using HR.LeaveManagement.Domain.Common;
+
+namespace HR.LeaveManagement.Application.Contracts.Persistence
 {
     /// <summary>
     /// Interface public qui Accepte T ou Type est une classe 
     /// </summary>
     /// <typeparam name="T">Represente un Type </typeparam>
-    public interface IGenericRepository<T> where T : class
+    public interface IGenericRepository<T> where T : BaseEntity
     {
        
         /// <summary>
