@@ -11,7 +11,7 @@
         /// Permet de récupérer toutes les entités
         /// </summary>
         /// <returns></returns>
-        Task<List<T>> GetAsync();
+        Task<IReadOnlyList<T>> GetAsync();
 
         /// <summary>
         /// Permet de récupérer une entité par son Id
@@ -24,21 +24,21 @@
         /// </summary>
         /// <param name="entity">Represente L'objet de l'entité à créer</param>
         /// <returns></returns>
-        Task<T> CreateAsync(T entity);
+        Task CreateAsync(T entity);
 
         /// <summary>
         /// Permet de mettre à jour une entité 
         /// </summary>
         /// <param name="entity">Represente l'objet de l'entité à mettre à jour</param>
         /// <returns></returns>
-        Task<T> UpdateAsync(T entity);
+        Task UpdateAsync(T entity);
 
         /// <summary>
         /// Supprimer une entité 
         /// </summary>
         /// <param name="entity">Represente l'objet à supprimer</param>
         /// <returns></returns>
-        Task<T> DeleteAsync(T entity);
+        Task DeleteAsync(T entity);
        
     }
 
