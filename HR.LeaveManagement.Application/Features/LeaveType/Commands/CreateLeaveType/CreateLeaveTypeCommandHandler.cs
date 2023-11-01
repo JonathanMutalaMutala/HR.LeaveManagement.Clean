@@ -18,15 +18,16 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Commands.CreateLeave
 
         public  async Task<int> Handle(CreateleaveTypeCommand request, CancellationToken cancellationToken)
         {
-            var validator = new CreateLeaveTypeCommandValidator();
+            var validator = new CreateLeaveTypeCommandValidator(); // Creation du constructeur pour la validation des Property 
 
-            var validationResult = await validator.ValidateAsync(request);
+            var validationResult = await validator.ValidateAsync(request); // Appel de la methode qui permet de faire la validation des elements 
 
 
             // SI la validation n'est pas valide 
             if (!validationResult.IsValid)
             {
-                throw new BadRequestException("Invalid LeaveType", validationResult);
+                // Envoie de l'exception 
+                throw new BadRequestException("Invalid LeaveType", validationResult); // Permet de faire la validation en appellant le constructeur de la BadRequestExcepetion 
             }
 
             //Convertir to domain entity object 
