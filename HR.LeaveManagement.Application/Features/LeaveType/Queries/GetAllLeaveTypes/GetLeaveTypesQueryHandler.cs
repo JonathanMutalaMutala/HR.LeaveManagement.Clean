@@ -33,6 +33,8 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveT
             // Recuperation des données au niveau de la base de donnée
             var leaveTypes = await _leaveTypeRepository.GetAsync();
 
+
+            
             // Convertir les data objects en Dto Objects 
             var data =   _mapper.Map<List<LeaveTypeDto>>(leaveTypes);
 
