@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using HR.LeaveManagement.Application.Contracts.Persistence;
+using HR.LeaveManagement.Application.Exceptions;
 using HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveTypes;
 using MediatR;
 
@@ -18,6 +19,17 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Commands.UpdateLeave
 
         public async Task<Unit> Handle(UpdateLeaveTypeCommand request, CancellationToken cancellationToken)
         {
+            var validatorCommand = new UpdateLeaveTypeCommandValidator(_leaveTypeRepository);
+
+            var validatorCommandResult = await validatorCommand.ValidateAsync(request);
+
+            if(!validatorCommandResult.IsValid)
+            {
+                throw new BadRequestException("Invalid Leave Type", validatorCommandResult);
+            }
+
+
+
             var leavetypeToUpdate = _mapper.Map<Domain.LeaveType>(request);
 
 
