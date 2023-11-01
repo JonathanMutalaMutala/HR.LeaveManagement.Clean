@@ -18,7 +18,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Commands.CreateLeave
 
         public  async Task<int> Handle(CreateleaveTypeCommand request, CancellationToken cancellationToken)
         {
-            var validator = new CreateLeaveTypeCommandValidator(); // Creation du constructeur pour la validation des Property 
+            var validator = new CreateLeaveTypeCommandValidator(this._leaveTypeRepository); // Creation du constructeur pour la validation des Property 
 
             var validationResult = await validator.ValidateAsync(request); // Appel de la methode qui permet de faire la validation des elements 
 
