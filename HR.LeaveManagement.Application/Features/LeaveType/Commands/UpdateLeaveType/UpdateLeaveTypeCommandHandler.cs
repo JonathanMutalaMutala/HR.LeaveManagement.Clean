@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HR.LeaveManagement.Application.Contracts.Logging;
 using HR.LeaveManagement.Application.Contracts.Persistence;
 using HR.LeaveManagement.Application.Exceptions;
 using HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveTypes;
@@ -10,11 +11,12 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Commands.UpdateLeave
     {
         private readonly IMapper _mapper;
         private readonly ILeaveTypeRepository _leaveTypeRepository;
-
-        public UpdateLeaveTypeCommandHandler(IMapper mapper, ILeaveTypeRepository leaveTypeRepository)
+        private readonly IAppLogger<UpdateLeaveTypeCommandHandler> _appLogger;
+        public UpdateLeaveTypeCommandHandler(IMapper mapper, ILeaveTypeRepository leaveTypeRepository, IAppLogger<UpdateLeaveTypeCommandHandler> appLogger)
         {
             this._mapper = mapper;
             this._leaveTypeRepository = leaveTypeRepository;
+            _appLogger = appLogger;
         }
 
         public async Task<Unit> Handle(UpdateLeaveTypeCommand request, CancellationToken cancellationToken)
@@ -25,6 +27,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Commands.UpdateLeave
 
             if(!validatorCommandResult.IsValid)
             {
+                _appLogger.LogWarning("Validation errors in update request for {0} - {1}", nameof(LeaveType), request.Id);
                 throw new BadRequestException("Invalid Leave Type", validatorCommandResult);
             }
 
