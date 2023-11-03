@@ -1,4 +1,33 @@
-﻿Cette couche permet de faire la gestion de interfaces 
+﻿
+/******** Explication du Dossier Core****************************/
+
+Le dossier Core comporte a deux projet : 
+
+1.HR.LeaveManagement.Application : Contient toute l'implementation de notre Businness Logic 
+-Dossiers Contrat : 
+Contient l'implementation des interfaces des nos entités tout les contrat et des autres services qu'on pourra ajouter 
+-Dossiers Exception : 
+Contient les exceptions costumize
+-Dossiers Features : Permet de mettre en place le modele CQRS : Command Query Responsibility Segregation 
+		*LeaveType : 
+		   Commands : represente les requetes des modifications de L'etat d'une entity Exemple Create,Delete,Update
+					   CreateLeave contient 3 Classes 
+					   CreateLeaveTypeCommand : Represente le Request qui sera envoyer et le proprieté qui seront donnée
+					   CreateLeaveTypeCommandHandler : classe permettant de Handle la request.
+          
+		   Queries : Represente les requetes de non modification de l'etat d'une entity, Exemple : les Gets
+-Dossier MappingProfiles : reprensente les mappings des toute LeaveTypes d'autoMapper
+
+
+
+
+
+
+
+
+
+
+Cette couche permet de faire la gestion de interfaces 
 
 Ici il est question d'implementer les operations que chacun des entité creer dans le Domain Layout doit faire 
 

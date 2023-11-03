@@ -5,10 +5,15 @@ using MediatR;
 
 namespace HR.LeaveManagement.Application.Features.LeaveType.Commands.CreateLeaveType
 {
+    /// <summary>
+    /// Represente le Handler de la methode 
+    /// </summary>
     public class CreateLeaveTypeCommandHandler : IRequestHandler<CreateleaveTypeCommand, int>
     {
+        /*Injection de dependances */
         private readonly IMapper _mapper;
         private readonly ILeaveTypeRepository _leaveTypeRepository;
+
 
         public CreateLeaveTypeCommandHandler(IMapper mapper, ILeaveTypeRepository leaveTypeRepository)
         {
@@ -16,6 +21,18 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Commands.CreateLeave
             this._leaveTypeRepository = leaveTypeRepository;
         }
 
+        /// <summary>
+        /// Methode qui va Handle la request Commande 
+        /// Cette methode Verifie les proprieté  envoyés en fonction de la logique metier mis en place
+        /// Verifie si les proprietés sont valides 
+        /// Convertis les Dto Domain entity Object 
+        /// Crée un New LeaveType
+        /// Retourne L'id du LeaveType
+        /// </summary>
+        /// <param name="request">Represente l'object envoyée</param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        /// <exception cref="BadRequestException"></exception>
         public  async Task<int> Handle(CreateleaveTypeCommand request, CancellationToken cancellationToken)
         {
             var validator = new CreateLeaveTypeCommandValidator(this._leaveTypeRepository); // Creation du constructeur pour la validation des Property 

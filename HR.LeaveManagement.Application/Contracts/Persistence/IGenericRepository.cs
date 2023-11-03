@@ -4,6 +4,7 @@ namespace HR.LeaveManagement.Application.Contracts.Persistence
 {
     /// <summary>
     /// Interface public qui Accepte T ou Type est une classe 
+    /// Reprensente toute les operations des bases qu'une entité peut avoir (CRUD) 
     /// </summary>
     /// <typeparam name="T">Represente un Type </typeparam>
     public interface IGenericRepository<T> where T : BaseEntity
