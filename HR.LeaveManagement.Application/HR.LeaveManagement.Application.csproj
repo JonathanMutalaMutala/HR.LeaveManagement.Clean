@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <Folder Include="Features\LeaveRequest\Command\" />
-    <Folder Include="Features\LeaveRequest\Query\" />
   </ItemGroup>
 
 </Project>
