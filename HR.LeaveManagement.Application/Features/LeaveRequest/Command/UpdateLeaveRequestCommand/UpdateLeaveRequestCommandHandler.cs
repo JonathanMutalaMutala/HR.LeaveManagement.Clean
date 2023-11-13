@@ -63,7 +63,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequest.Command.UpdateLea
                     To = string.Empty,
                     Body = $"Your leave request for {request.StartDate:D} to {request.EndDate:D}" +
                       $"has been updated successfully.",
-                    Subject = "Leave Request Submitted"
+                    Subject = "Leave Request Updated"
                 };
                 await _emailSender.SendEmailAsync(email);
             }
