@@ -23,12 +23,14 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveT
         }
 
         /// <summary>
-        /// Cette methode fait trois choses 
-        /// Query la base de donnée, Convert les Data objects en DTO objects, Return la liste de DTO objects
+        /// Cette methode fait trois choses : 
+        /// Query la base de donnée,
+        /// Convert les Data objects en DTO objects, 
+        /// Return la liste de DTO objects
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="request">Correspond à la query demandé</param>
         /// <param name="cancellationToken"></param>
-        /// <returns></returns>
+        /// <returns>La liste des LeaveTypeDto</returns>
         /// <exception cref="NotImplementedException"></exception>
         public async Task<List<LeaveTypeDto>> Handle(GetLeaveTypesQuery request, CancellationToken cancellationToken)
         {
