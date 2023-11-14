@@ -47,7 +47,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Queries.GetLeaveType
 
             // Verifie si le Data existe 
             if (leaveType == null)
-            {
+            { 
                 throw new NotFoundException(nameof(leaveType), request.Id);
             }
 
