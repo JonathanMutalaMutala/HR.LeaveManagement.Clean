@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.13" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
     <PackageReference Include="Moq" Version="4.20.69" />
     <PackageReference Include="Shouldly" Version="4.2.1" />
@@ -26,12 +27,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HR.LeaveManagement.Application\HR.LeaveManagement.Application.csproj" />
+    <ProjectReference Include="..\HR.LeaveManagement.Persistence\HR.LeaveManagement.Persistence.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Features\LeaveAllocations\" />
     <Folder Include="Features\LeaveRequests\" />
-    <Folder Include="Features\LeaveTypes\Commands\" />
   </ItemGroup>
 
 </Project>

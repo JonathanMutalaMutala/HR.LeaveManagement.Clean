@@ -9,10 +9,14 @@ using System.Threading.Tasks;
 
 namespace HR.LeaveManagement.Application.UnitTests.Mocks
 {
+    /// <summary>
+    /// Cette classe Initialise le Mock pour la leaveType
+    /// </summary>
     public class MockLeaveTypeRepository
     {
         public static Mock<ILeaveTypeRepository> GetMockLeaveTypeRepository()
         {
+            //Arrange
             var leaveTypes = new List<LeaveType>
             {
                 new LeaveType
@@ -39,6 +43,7 @@ namespace HR.LeaveManagement.Application.UnitTests.Mocks
             // Arrange 
             var mockRepo = new Mock<ILeaveTypeRepository>();
 
+
             mockRepo.Setup(r => r.GetAsync()).ReturnsAsync(leaveTypes);
 
             mockRepo.Setup(r => r.CreateAsync(It.IsAny<LeaveType>()))
@@ -47,6 +52,17 @@ namespace HR.LeaveManagement.Application.UnitTests.Mocks
                     leaveTypes.Add(leaveType);
                     return Task.CompletedTask;
                 });
+
+            // Initialisation de la mop pour la creation d'un LeaveType
+            mockRepo.Setup(r => r.IsLeaveTypeUnique(It.IsAny<string>()))
+                .ReturnsAsync((string name) =>
+                {
+                    return !leaveTypes.Any(x => x.Name.ToLower() == name.ToLower());
+                });
+
+
+
+
             return mockRepo;
         }
     }
