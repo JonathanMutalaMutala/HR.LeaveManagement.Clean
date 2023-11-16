@@ -1,6 +1,7 @@
 ﻿using HR.LeaveManagement.Application.Contracts.Persistence;
 using HR.LeaveManagement.Domain;
 using Moq;
+using Shouldly;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,6 +47,8 @@ namespace HR.LeaveManagement.Application.UnitTests.Mocks
 
             mockRepo.Setup(r => r.GetAsync()).ReturnsAsync(leaveTypes);
 
+
+            // Arrange Pour le CreateLeaveType
             mockRepo.Setup(r => r.CreateAsync(It.IsAny<LeaveType>()))
                 .Returns((LeaveType leaveType) =>
                 {
@@ -57,9 +60,20 @@ namespace HR.LeaveManagement.Application.UnitTests.Mocks
             mockRepo.Setup(r => r.IsLeaveTypeUnique(It.IsAny<string>()))
                 .ReturnsAsync((string name) =>
                 {
+                    if(string.IsNullOrEmpty(name))
+                    {
+                        return false;
+                    }
+
                     return !leaveTypes.Any(x => x.Name.ToLower() == name.ToLower());
                 });
 
+            // Initialisation pour le UpdateLeaveType cette methode doit renvoyer une leaveType sinon le test sera faux 
+            mockRepo.Setup(r => r.GetByIdAsync(It.IsAny<int>()))
+                .ReturnsAsync((int id) =>
+            {
+                return leaveTypes.FirstOrDefault(x => x.Id == id) ;
+            });
 
 
 
