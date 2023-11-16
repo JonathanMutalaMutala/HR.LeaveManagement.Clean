@@ -80,12 +80,17 @@ namespace HR.LeaveManagement.Application.UnitTests.Features.LeaveTypes.Commands
             {
                 Id = 1,
                 DefaultDays = 10,
-                Name =null
+                Name = "Name"
             };
+            var test = new UpdateLeaveTypeCommandValidator(_leaveTypeRepositoryMock.Object);
 
-            var handler = new UpdateLeaveTypeCommandHandler(_mapperMock, _leaveTypeRepositoryMock.Object, _loggerMock.Object);
+            var testValidation = await test.ValidateAsync(command);
 
-            await Assert.ThrowsAsync<BadRequestException>(async () => await handler.Handle(command, CancellationToken.None));
+            //var handler = new UpdateLeaveTypeCommandHandler(_mapperMock, _leaveTypeRepositoryMock.Object, _loggerMock.Object);
+
+
+            //await Assert.ThrowsAsync<BadRequestException>(async () => await handler.Handle(command, CancellationToken.None));
+            Assert.False(testValidation.IsValid);
         }
     }
 }
