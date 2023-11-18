@@ -69,11 +69,11 @@ namespace HR.LeaveManagement.Application.UnitTests.Mocks
                 });
 
             // Initialisation pour le UpdateLeaveType cette methode doit renvoyer une leaveType sinon le test sera faux 
-            mockRepo.Setup(r => r.GetByIdAsync(It.IsAny<int>()))
-                .ReturnsAsync((int id) =>
-            {
-                return leaveTypes.FirstOrDefault(x => x.Id == id) ;
-            });
+            //mockRepo.Setup(r => r.GetByIdAsync(It.IsAny<int>()))
+            //    .ReturnsAsync((int id) =>
+            //{
+            //    return leaveTypes.FirstOrDefault(x => x.Id == id) ;
+            //});
 
 
 
