@@ -1,17 +1,23 @@
 ﻿using AutoMapper;
+using Blazored.LocalStorage;
 
 namespace HR.LeaveManagement.BlazorUI.Services.Base
 {
     public class BaseHttpService
     {
         protected IClient _client;
-        protected readonly IMapper _mapper; 
-        public BaseHttpService(IClient client,IMapper mapper)
+        protected readonly IMapper _mapper;
+        protected readonly ILocalStorageService _localStorage;
+        public BaseHttpService(IClient client,IMapper mapper,ILocalStorageService localStorageService)
         {
             _client = client;
             _mapper = mapper;
+            _localStorage = localStorageService;
         }
 
+        public BaseHttpService(IClient client, IMapper mapper)
+        {
+        }
 
         protected Response<Guid> ConvertApiException<Guid>(ApiException exception)
         {
