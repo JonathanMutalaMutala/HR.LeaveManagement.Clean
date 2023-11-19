@@ -27,11 +27,16 @@ namespace HR.LeaveManagement.BlazorUI.Services
            return _mapper.Map<LeaveTypeVM>(leaveType);
         }
 
+        /// <summary>
+        /// Cette methode Recupere tout les LeaveTypes 
+        /// Puis Renvoie La liste de LeaveTypeVM en utilisant AutoMapper Pour mapper les Datas
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<LeaveTypeVM>> GetLeaveTypes()
         {
-            var leaveTypes = await _client.LeaveTypesAllAsync();
+            var leaveTypes = await _client.LeaveTypesAllAsync(); // Recuperation de la liste de LeaveType
             
-            return _mapper.Map<List<LeaveTypeVM>>(leaveTypes);
+            return _mapper.Map<List<LeaveTypeVM>>(leaveTypes); // Retourn La liste de LeaveTypeVM en Mappant aussi Avec le DTo que L'api retourne 
 
         }
 
