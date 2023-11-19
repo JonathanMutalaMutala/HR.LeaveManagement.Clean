@@ -1,5 +1,5 @@
 ﻿using HR.LeaveManagement.Application.Contracts.Email;
-using HR.LeaveManagement.Application.Models;
+using HR.LeaveManagement.Application.Models.Email;
 using Microsoft.Extensions.Options;
 using SendGrid;
 using SendGrid.Helpers.Mail;
