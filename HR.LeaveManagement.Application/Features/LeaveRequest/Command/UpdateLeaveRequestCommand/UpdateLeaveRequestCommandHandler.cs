@@ -4,6 +4,7 @@ using HR.LeaveManagement.Application.Contracts.Logging;
 using HR.LeaveManagement.Application.Contracts.Persistence;
 using HR.LeaveManagement.Application.Exceptions;
 using HR.LeaveManagement.Application.Models;
+using HR.LeaveManagement.Application.Models.Email;
 using MediatR;
 using MediatR.Pipeline;
 using System;
