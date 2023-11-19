@@ -49,5 +49,15 @@ namespace HR.LeaveManagement.BlazorUI.Services.Base
             }
             return response;
         }
+        /// <summary>
+        /// A chaque Appel de L'API nous devons inclure le Bearer token dans le Authorization Header 
+        /// </summary>
+        /// <returns></returns>
+        protected async Task AddBearerToken()
+        {
+            if(await _localStorage.ContainKeyAsync("token"))
+                _client.HttpClient.DefaultRequestHeaders.Authorization = 
+                    new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer",await _localStorage.GetItemAsync<string>("token"));
+        }
     }
 }
