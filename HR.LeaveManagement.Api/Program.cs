@@ -16,6 +16,8 @@ builder.Services.AddIdentityServices(builder.Configuration);
 
 builder.Services.AddControllers();
 
+
+
 //Permettre à L'API de recevoir d'autre requetes 
 builder.Services.AddCors(options =>
 {
