@@ -1,0 +1,77 @@
+﻿@page "/leavetypes/"
+
+
+<h3>Leave Types</h3>
+
+<div class="m-2 d-flex justify-content-end">
+    <button @onclick="CreateLeaveType" class="btn btn-success"> 
+        Add Leave Type
+    </button>
+</div>
+
+@if(string.IsNullOrEmpty(Message) == false)
+{
+    <div class="alert alert-danger">
+        @Message
+    </div>
+}
+
+
+@if(leaveTypeVMs == null)
+{
+    <p>Loading Data ... </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Default Days
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var leaveTypeItem in leaveTypeVMs)
+            {
+                <tr>
+                    <td>
+                        @leaveTypeItem.Id
+                    </td>
+                    <td>
+                        @leaveTypeItem.Name
+                    </td>
+                    <td>
+                        @leaveTypeItem.DefaultDays
+                    </td>
+                    <td>
+                        <button @onclick=@(() =>AllocateLeaveType(leaveTypeItem.Id) ) class="btn btn-dark">
+                            Allocate Leave
+                        </button>
+                        <button @onclick=@(() =>AllocateLeaveType(leaveTypeItem.Id)) class="btn btn-warning">
+                            Edit Leave type
+                        </button>
+                        <button @onclick=@(() =>AllocateLeaveType(leaveTypeItem.Id)) class="btn btn-info">
+                            Details Leave Type
+                        </button>
+                        <button @onclick=@(() =>AllocateLeaveType(leaveTypeItem.Id)) class="btn btn-danger">
+                            Delete Leave Type
+                        </button>
+                       
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
