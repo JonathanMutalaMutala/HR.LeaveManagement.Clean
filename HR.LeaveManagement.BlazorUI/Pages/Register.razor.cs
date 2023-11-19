@@ -4,10 +4,9 @@ using Microsoft.AspNetCore.Components;
 
 namespace HR.LeaveManagement.BlazorUI.Pages
 {
-    public partial class Login
+    public partial class Register
     {
-        public LoginVM Model { get; set; }
-
+        public RegisterVM Model { get; set; }
 
         [Inject]
         public NavigationManager NavigationManager { get; set; }
@@ -15,20 +14,22 @@ namespace HR.LeaveManagement.BlazorUI.Pages
         public string Message { get; set; }
 
         [Inject]
-        private IAuthenticationService AuthenticationService { get; set; }
+        private IAuthenticationService authenticationService { get; set; }
 
         protected override void OnInitialized()
         {
-            Model = new LoginVM();
+           Model = new RegisterVM();
         }
 
-        protected async Task HandleLogin()
+        protected async Task HandleRegister()
         {
-            if (await AuthenticationService.AuthenticateAsync(Model.Email,Model.Password))
+            var result = await authenticationService.RegisterAsync(Model.FirstName,Model.LastName,Model.Email,Model.UserName,Model.Password);
+
+            if(result)
             {
                 NavigationManager.NavigateTo("/");
             }
-            Message = "UserName/Password combination unknown";
+            Message = "Something went wrong, please try again";
         }
     }
 }
