@@ -1,12 +1,15 @@
-﻿namespace HR.LeaveManagement.BlazorUI.Services.Base
+﻿using AutoMapper;
+
+namespace HR.LeaveManagement.BlazorUI.Services.Base
 {
     public class BaseHttpService
     {
         protected IClient _client;
-
-        public BaseHttpService(IClient client)
+        protected readonly IMapper _mapper; 
+        public BaseHttpService(IClient client,IMapper mapper)
         {
             _client = client;
+            _mapper = mapper;
         }
 
 
