@@ -10,6 +10,29 @@ namespace HR.LeaveManagement.BlazorUI.Services
         public LeaveAllocationService(IClient client, IMapper mapper, ILocalStorageService localStorageService) : base(client, mapper, localStorageService)
         {
         }
+
+        /// <summary>
+        /// Methode permettant de créer une LeaveAllocation 
+        /// </summary>
+        /// <param name="leaveTypeId">Represente L'id de la LeaveType</param>
+        /// <returns>un status code 200 si crée</returns>
+        public async Task<Response<Guid>> CreateLeaveAllocations(int leaveTypeId)
+        {
+            try
+            {
+                var response = new Response<Guid>();
+                CreateLeaveAllocationCommand createLeaveAllocation = new() { LeaveTypeId = leaveTypeId };   
+
+                await _client.LeaveAllocationPOSTAsync(createLeaveAllocation);
+
+                return response;
+            }
+            catch (ApiException ex)
+            {
+
+                return ConvertApiException<Guid>(ex);
+            }
+        }
     }
 
 }

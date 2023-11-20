@@ -58,15 +58,15 @@ else
                             <button @onclick=@(() =>AllocateLeaveType(leaveTypeItem.Id) ) class="btn btn-dark">
                                 Allocate Leave
                             </button>
-                            <button @onclick=@(() =>AllocateLeaveType(leaveTypeItem.Id)) class="btn btn-warning">
+                            <button @onclick=@(() =>EditLeaveType(leaveTypeItem.Id)) class="btn btn-warning">
                                 Edit Leave type
                             </button>
-                            <button @onclick=@(() =>AllocateLeaveType(leaveTypeItem.Id)) class="btn btn-danger">
+                            <button @onclick=@(() =>DeleteLeaveType(leaveTypeItem.Id)) class="btn btn-danger">
                                 Delete Leave Type
                             </button>
                         </AuthorizeView>
                        
-                        <button @onclick=@(() =>AllocateLeaveType(leaveTypeItem.Id)) class="btn btn-info">
+                        <button @onclick=@(() =>DetailsLeaveType(leaveTypeItem.Id)) class="btn btn-info">
                             Details Leave Type
                         </button>
                        

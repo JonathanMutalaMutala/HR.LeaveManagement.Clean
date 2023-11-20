@@ -14,6 +14,8 @@ namespace HR.LeaveManagement.BlazorUI.Pages.LeaveTypes
         [Inject]
         public ILeaveTypeService LeaveTypeService { get; set; }
 
+        [Inject]
+        public ILeaveAllocationService LeaveAllocationService { get; set; }
 
         #endregion
 
@@ -28,9 +30,9 @@ namespace HR.LeaveManagement.BlazorUI.Pages.LeaveTypes
             NavigationManager.NavigateTo("/leavetypes/create/");
         }
 
-        public void AllocateLeaveType(int id)
+        public void AllocateLeaveType(int leaveTypeId)
         {
-
+            LeaveAllocationService.CreateLeaveAllocations(leaveTypeId);
         }
         protected void EditLeaveType(int id)
         {

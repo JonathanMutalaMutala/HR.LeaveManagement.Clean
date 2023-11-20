@@ -75,12 +75,6 @@ namespace HR.LeaveManagement.Application.Features.LeaveAlllocation.Commands.Crea
 
             await _leaveAllocationRepository.AddAllocations(allocationsLst);
 
-
-
-            // Mappage de l'allocation 
-           // var leaveAllocation = _mapper.Map<Domain.LeaveAllocation>(request);
-           // await _leaveAllocationRepository.CreateAsync(leaveAllocation); // Création 
-            
             return Unit.Value;
         }
     }
