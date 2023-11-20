@@ -73,7 +73,11 @@ namespace HR.LeaveManagement.Application.Features.LeaveAlllocation.Commands.Crea
 
             }
 
-            await _leaveAllocationRepository.AddAllocations(allocationsLst);
+            // On ajoute seulement si une allocationLeave a été ajouté
+            if(allocationsLst.Count > 0)
+            {
+                await _leaveAllocationRepository.AddAllocations(allocationsLst);
+            }
 
             return Unit.Value;
         }
