@@ -34,7 +34,7 @@ namespace HR.LeaveManagement.Api.Controllers
 
         // GET api/<LeaveAllocationController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<LeaveAllocationDto>> Get(int id)
+        public async Task<ActionResult<LeaveAllocationDetailsDto>> Get(int id)
         {
            var leaveAllocation = await _mediator.Send(new GetLeaveAllocationDetailsQuery { Id = id });
 
