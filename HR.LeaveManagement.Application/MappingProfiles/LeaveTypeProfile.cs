@@ -3,6 +3,9 @@ using HR.LeaveManagement.Application.Features.LeaveAlllocation.Commands.CreateLe
 using HR.LeaveManagement.Application.Features.LeaveAlllocation.Queries.GetLeaveAllocationDetails;
 using HR.LeaveManagement.Application.Features.LeaveAlllocation.Queries.GetLeaveAllocations;
 using HR.LeaveManagement.Application.Features.LeaveRequest.Command.CreateLeaveRequestCommand;
+using HR.LeaveManagement.Application.Features.LeaveRequest.Command.UpdateLeaveRequestCommand;
+using HR.LeaveManagement.Application.Features.LeaveRequest.Query.GetLeaveRequestDetail;
+using HR.LeaveManagement.Application.Features.LeaveRequest.Query.GetLeaveRequestList;
 using HR.LeaveManagement.Application.Features.LeaveType.Commands.CreateLeaveType;
 using HR.LeaveManagement.Application.Features.LeaveType.Commands.UpdateLeaveType;
 using HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveTypes;
@@ -37,8 +40,11 @@ namespace HR.LeaveManagement.Application.MappingProfiles
 
 
             //LeaveRequest 
+            CreateMap<LeaveRequestListDto, LeaveRequest>().ReverseMap();
+            CreateMap<LeaveRequestDetailsDto, LeaveRequest>().ReverseMap();
+            CreateMap<LeaveRequest, LeaveRequestDetailsDto>();
             CreateMap<CreateLeaveRequestCommand, LeaveRequest>();
-
+            CreateMap<UpdateLeaveRequestCommand, LeaveRequest>();
 
 
         }
