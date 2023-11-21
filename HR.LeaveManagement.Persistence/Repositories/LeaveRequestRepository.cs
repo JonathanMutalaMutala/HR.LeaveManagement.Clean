@@ -31,8 +31,8 @@ namespace HR.LeaveManagement.Persistence.Repositories
 
         public async Task<LeaveRequest> GetLeaveRequestWithDetails(int id)
         {
-           var leaveRequest = await _context.leaveRequests
-                .Include(x => x.LeaveType)
+            var leaveRequest = await _context.leaveRequests
+                 .Include(x => x.LeaveType)
                 .FirstOrDefaultAsync(x => x.Id == id);
 
             return leaveRequest;

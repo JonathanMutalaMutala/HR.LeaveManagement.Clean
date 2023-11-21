@@ -1,4 +1,4 @@
-﻿@page "/leaverequests"
+﻿@page "/leaverequests/"
 
 
 <h3>Index</h3>
@@ -28,7 +28,7 @@
         <div class="col-md-3">
             <div class="card text-white bg-success" style="width:18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Rejected Requests</h5>
+                    <h5 class="card-title">Approved Requests</h5>
                     <p class="card-text">@Model.ApprovedRequests</p>
                 </div>
             </div>
@@ -36,7 +36,7 @@
         <div class="col-md-3">
             <div class="card text-white bg-danger" style="width:18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Approved Requests</h5>
+                    <h5 class="card-title">Rejected Requests</h5>
                     <p class="card-text">@Model.RejectedRequests</p>
                 </div>
             </div>
@@ -83,10 +83,10 @@
                     @item.Employee.FirstName @item.Employee.LastName
                 </td>
                 <td>
-                   @item.StartDate
+                   @item.StartDate.Value.ToShortDateString()
                 </td>
                 <td>
-                   @item.EndDate
+                   @item.EndDate.Value.ToShortDateString()
                 </td>
                  <td>
                     @item.LeaveType.Name

@@ -12,9 +12,18 @@ namespace HR.LeaveManagement.BlazorUI.Services
         {
         }
 
-        public Task ApproveLeaveRequest(int id, bool approved)
+        public async Task ApproveLeaveRequest(int id, bool approved)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var request = new ChangeLeaveRequestApprovalCommand { Approved = approved, Id = id };
+                await _client.UpdateApprovalAsync(request);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public  async Task<Response<Guid>> CreateLeaveRequest(LeaveRequestVM leaveRequest)
@@ -52,9 +61,11 @@ namespace HR.LeaveManagement.BlazorUI.Services
             return model;
         }
 
-        public Task<LeaveRequestVM> GetLeaveRequestById(int id)
+        public async Task<LeaveRequestVM> GetLeaveRequestById(int id)
         {
-            throw new NotImplementedException();
+           var leaveRequest = await _client.LeaveRequestGETAsync(id);
+
+            return _mapper.Map<LeaveRequestVM>(leaveRequest);
         }
     }
 }
