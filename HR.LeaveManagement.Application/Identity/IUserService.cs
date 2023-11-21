@@ -13,5 +13,6 @@ namespace HR.LeaveManagement.Application.Identity
 
         Task<Employee> GetEmployeeByIdAsync(string userId);
 
+        public string UserId { get;  }
     }
 }
