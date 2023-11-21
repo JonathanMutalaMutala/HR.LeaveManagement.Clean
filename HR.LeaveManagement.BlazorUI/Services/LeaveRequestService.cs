@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Blazored.LocalStorage;
 using HR.LeaveManagement.BlazorUI.Contracts;
+using HR.LeaveManagement.BlazorUI.Models.Employee;
+using HR.LeaveManagement.BlazorUI.Models.LeaveAllocation;
 using HR.LeaveManagement.BlazorUI.Models.LeaveRequest;
 using HR.LeaveManagement.BlazorUI.Services.Base;
 
@@ -24,6 +26,11 @@ namespace HR.LeaveManagement.BlazorUI.Services
 
                 throw;
             }
+        }
+
+        public Task<Response<Guid>> CancelLeaveRequestById(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public  async Task<Response<Guid>> CreateLeaveRequest(LeaveRequestVM leaveRequest)
@@ -66,6 +73,21 @@ namespace HR.LeaveManagement.BlazorUI.Services
            var leaveRequest = await _client.LeaveRequestGETAsync(id);
 
             return _mapper.Map<LeaveRequestVM>(leaveRequest);
+        }
+
+        public async Task<EmployeeLeaveRequestViewVM> GetUserLeaveRequests()
+        {
+           var leaveRequests = await _client.LeaveRequestAllAsync(isLoggedInUser:true);
+           var allocations = await _client.LeaveAllocationAllAsync(isLoggedInUser: true);
+
+            var model = new EmployeeLeaveRequestViewVM
+            {
+                leaveAllocationVMs = _mapper.Map<List<LeaveAllocationVM>>(allocations),
+                leaveRequestVMs = _mapper.Map<List<LeaveRequestVM>>(leaveRequests),
+            };
+
+            return model;
+
         }
     }
 }
