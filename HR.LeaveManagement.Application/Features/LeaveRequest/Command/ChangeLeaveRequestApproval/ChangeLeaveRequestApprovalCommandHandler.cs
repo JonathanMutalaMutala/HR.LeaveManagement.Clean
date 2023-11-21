@@ -22,16 +22,18 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequest.Command.ChangeLea
         private readonly ILeaveRequestRepository _leaveRequestRepository; 
         private readonly ILeaveTypeRepository _leaveTypeRepository;
         private readonly IAppLogger<ChangeLeaveRequestApprovalCommandHandler> _appLogger;
+        private readonly ILeaveAllocationRepository _leaveAllocationRepository;
 
-        public ChangeLeaveRequestApprovalCommandHandler(IMapper mapper, IEmailSender emailSender, 
+        public ChangeLeaveRequestApprovalCommandHandler(IMapper mapper, IEmailSender emailSender,
             ILeaveRequestRepository leaveRequestRepository,
-            ILeaveTypeRepository leaveTypeRepository,IAppLogger<ChangeLeaveRequestApprovalCommandHandler> appLogger)
+            ILeaveTypeRepository leaveTypeRepository, IAppLogger<ChangeLeaveRequestApprovalCommandHandler> appLogger, ILeaveAllocationRepository leaveAllocationRepository)
         {
             _mapper = mapper;
             _emailSender = emailSender;
             _leaveRequestRepository = leaveRequestRepository;
             _leaveTypeRepository = leaveTypeRepository;
             _appLogger = appLogger;
+            _leaveAllocationRepository = leaveAllocationRepository;
         }
 
         public async Task<Unit> Handle(ChangeLeaveRequestApprovalCommand request, CancellationToken cancellationToken)
@@ -47,6 +49,14 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequest.Command.ChangeLea
 
             await _leaveRequestRepository.UpdateAsync(leaveRequest);
 
+            if(request.Approved)
+            {
+                int daysRequested = (int)(leaveRequest.EndDate - leaveRequest.StartDate).TotalDays;
+                var allocation = await _leaveAllocationRepository.GetUserAllocations(leaveRequest.RequestingEmployedId, leaveRequest.LeaveTypeId);
+                allocation.NumberOfDays -= daysRequested;
+
+                await _leaveAllocationRepository.UpdateAsync(allocation);
+            }
 
 
             try
@@ -65,8 +75,6 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequest.Command.ChangeLea
 
                 _appLogger.LogWarning(ex.Message);
             }
-
-
             return Unit.Value;
 
         }
