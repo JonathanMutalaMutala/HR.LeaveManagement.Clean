@@ -9,7 +9,7 @@ namespace HR.LeaveManagement.BlazorUI.Pages.LeaveRequests
     {
         [Inject] ILeaveRequestService leaveRequestService { get; set; }
         [Inject] NavigationManager navigationManager { get; set; }
-        public AdminLeaveRequestViewVM Model { get; set;}
+        public AdminLeaveRequestViewVM Model { get; set;} = new AdminLeaveRequestViewVM();
 
         protected override async Task OnInitializedAsync()
         {

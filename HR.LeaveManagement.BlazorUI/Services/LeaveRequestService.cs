@@ -45,8 +45,8 @@ namespace HR.LeaveManagement.BlazorUI.Services
             {
                 TotalRequests = leaveRequests.Count,
                 ApprovedRequests = leaveRequests.Count(q => q.Approved == true),
-                PendingRequests = leaveRequests.Count(x => x.Approved == true),
-                RejectedRequests = leaveRequests.Count(x => x.Approved == true),
+                PendingRequests = leaveRequests.Count(x => x.Approved == null),
+                RejectedRequests = leaveRequests.Count(x => x.Approved == false),
                 LeaveRequests = _mapper.Map<List<LeaveRequestVM>>(leaveRequests)
             };
             return model;
