@@ -14,6 +14,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequest.Query.GetLeaveReq
         public Employee Employee { get; set; }
         public string RequestingEmployedId { get; set; }
         public LeaveTypeDto LeaveType { get; set; }
+        public DateTime DateRequested { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public bool? Approved { get; set; }
