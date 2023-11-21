@@ -25,7 +25,7 @@ namespace HR.LeaveManagement.BlazorUI.Models.LeaveRequest
 
         [Display(Name ="Start Date")]
         [Required]
-        public DateTime? StarDate {  get; set; }
+        public DateTime? StartDate { get; set; }
 
         [Display(Name ="End Date")]
         [Required]

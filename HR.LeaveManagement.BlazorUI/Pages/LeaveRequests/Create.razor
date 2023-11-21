@@ -6,12 +6,12 @@
     <DataAnnotationsValidator/>
     <ValidationSummary/>
     <div class="form-control">
-        <label for="startDate">Start Date</label>
-        <InputDate class="form-control" id="startDate" @bind-Value="LeaveRequest.StarDate"/>
-        <ValidationMessage For="@(() => LeaveRequest.StarDate)"/>
+        <label for="StartDate">Start Date</label>
+        <InputDate class="form-control" id="startDate" @bind-Value="LeaveRequest.StartDate"/>
+        <ValidationMessage For="@(() => LeaveRequest.StartDate)"/>
     </div>
     <div class="form-group">
-        <label for="endDate">End Date</label>
+        <label for="EndDate">End Date</label>
         <InputDate class="form-control" id="endDate" @bind-Value="LeaveRequest.EndDate"/>
         <ValidationMessage For="@(() => LeaveRequest.EndDate)" />
     </div>

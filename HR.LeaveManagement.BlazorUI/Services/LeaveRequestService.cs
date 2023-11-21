@@ -17,9 +17,20 @@ namespace HR.LeaveManagement.BlazorUI.Services
             throw new NotImplementedException();
         }
 
-        public Task<Response<Guid>> CreateLeaveRequest(LeaveRequestVM leaveRequest)
+        public  async Task<Response<Guid>> CreateLeaveRequest(LeaveRequestVM leaveRequest)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var response = new Response<Guid>();
+                var createLeaveRequest = _mapper.Map<CreateLeaveRequestCommand>(leaveRequest);
+
+                await _client.LeaveRequestPOSTAsync(createLeaveRequest);
+                return response;
+            }
+            catch (ApiException ex)
+            {
+                return ConvertApiException<Guid>(ex);
+            }
         }
 
         public Task DeleteLeaveRequest(int id)

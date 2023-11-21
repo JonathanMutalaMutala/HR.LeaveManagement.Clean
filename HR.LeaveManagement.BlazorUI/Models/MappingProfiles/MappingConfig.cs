@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HR.LeaveManagement.BlazorUI.Models.LeaveRequest;
 using HR.LeaveManagement.BlazorUI.Models.LeaveTypes;
 using HR.LeaveManagement.BlazorUI.Services.Base;
 
@@ -10,6 +11,11 @@ namespace HR.LeaveManagement.BlazorUI.Models.MappingProfiles
         {
             CreateMap<LeaveTypeDto, LeaveTypeVM>().ReverseMap();
             CreateMap<CreateleaveTypeCommand,LeaveTypeVM>().ReverseMap();
+            CreateMap<UpdateLeaveTypeCommand,LeaveTypeVM>().ReverseMap();
+
+
+            CreateMap<CreateLeaveRequestCommand,LeaveRequestVM>().ReverseMap();
+            CreateMap<UpdateLeaveRequestCommand, LeaveRequestVM>().ReverseMap();
         }
     }
 }

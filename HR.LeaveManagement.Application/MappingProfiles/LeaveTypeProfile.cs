@@ -2,6 +2,7 @@
 using HR.LeaveManagement.Application.Features.LeaveAlllocation.Commands.CreateLeaveAllocation;
 using HR.LeaveManagement.Application.Features.LeaveAlllocation.Queries.GetLeaveAllocationDetails;
 using HR.LeaveManagement.Application.Features.LeaveAlllocation.Queries.GetLeaveAllocations;
+using HR.LeaveManagement.Application.Features.LeaveRequest.Command.CreateLeaveRequestCommand;
 using HR.LeaveManagement.Application.Features.LeaveType.Commands.CreateLeaveType;
 using HR.LeaveManagement.Application.Features.LeaveType.Commands.UpdateLeaveType;
 using HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveTypes;
@@ -33,6 +34,13 @@ namespace HR.LeaveManagement.Application.MappingProfiles
             CreateMap<LeaveAllocation, LeaveAllocationDto>(); 
             CreateMap<CreateLeaveAllocationCommand, LeaveAllocation>();
             CreateMap<UpdateLeaveTypeCommand,LeaveAllocation>();
+
+
+            //LeaveRequest 
+            CreateMap<CreateLeaveRequestCommand, LeaveRequest>();
+
+
+
         }
     }
 }
