@@ -1,4 +1,5 @@
 ﻿using HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveTypes;
+using HR.LeaveManagement.Application.Models.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequest.Query.GetLeaveReq
 {
     public class LeaveRequestListDto
     {
+        public int Id { get; set; }
+        public Employee Employee { get; set; }
         public string RequestingEmployedId { get; set; }
         public LeaveTypeDto LeaveType { get; set; }
         public DateTime StartDate { get; set; }
