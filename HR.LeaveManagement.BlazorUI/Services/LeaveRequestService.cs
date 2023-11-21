@@ -38,6 +38,20 @@ namespace HR.LeaveManagement.BlazorUI.Services
             throw new NotImplementedException();
         }
 
+        public async Task<AdminLeaveRequestViewVM> GetAdminLeaveRequestList()
+        {
+           var leaveRequests = await _client.LeaveRequestAllAsync(isLoggedInUser: false);
+            var model = new AdminLeaveRequestViewVM
+            {
+                TotalRequests = leaveRequests.Count,
+                ApprovedRequests = leaveRequests.Count(q => q.Approved == true),
+                PendingRequests = leaveRequests.Count(x => x.Approved == true),
+                RejectedRequests = leaveRequests.Count(x => x.Approved == true),
+                LeaveRequests = _mapper.Map<List<LeaveRequestVM>>(leaveRequests)
+            };
+            return model;
+        }
+
         public Task<LeaveRequestVM> GetLeaveRequestById(int id)
         {
             throw new NotImplementedException();
