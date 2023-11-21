@@ -80,7 +80,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequest.Command.CreateLea
 
             var leaveRequest = _mapper.Map<Domain.LeaveRequest>(request);
             leaveRequest.RequestingEmployedId = employeeId;
-
+            leaveRequest.DateRequested = DateTime.Now;
             await _leaveRequestRepository.CreateAsync(leaveRequest);
 
 
