@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HR.LeaveManagement.Application.Features.LeaveAlllocation.Queries.GetLeaveAllocationDetails;
+using HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveTypes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +12,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveAlllocation.Queries.GetLe
     {
         public int Id { get; set; }
         public int NumberOfDays { get; set; }
-        public Domain.LeaveType LeaveType { get; set; }
+        public LeaveTypeDto LeaveType { get; set; }
         public int LeaveTypeId { get; set; }
         public int Period { get; set; }
     }
