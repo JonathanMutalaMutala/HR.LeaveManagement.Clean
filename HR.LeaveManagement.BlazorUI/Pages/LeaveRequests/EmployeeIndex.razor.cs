@@ -1,12 +1,14 @@
 using HR.LeaveManagement.BlazorUI.Contracts;
 using HR.LeaveManagement.BlazorUI.Models.Employee;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace HR.LeaveManagement.BlazorUI.Pages.LeaveRequests
 {
     public partial class EmployeeIndex
     {
         [Inject] ILeaveRequestService leaveRequestService {  get; set; }
+        [Inject] IJSRuntime js {  get; set; }
         [Inject] NavigationManager navigationManager { get; set; }
         public EmployeeLeaveRequestViewVM Model { get; set;} = new EmployeeLeaveRequestViewVM();
 
@@ -18,14 +20,21 @@ namespace HR.LeaveManagement.BlazorUI.Pages.LeaveRequests
         }
         async Task CancelRequestAsync(int id)
         {
-            var response = await leaveRequestService.CancelLeaveRequestById(id);
-            if (response.Success)
+            var confirm = await js.InvokeAsync<bool>("confirm", "Do you want to cancel this request");
+
+            if (confirm)
             {
-                await InvokeAsync(StateHasChanged);
-            }else
-            {
-                Message = response.Message;
+                var response = await leaveRequestService.CancelLeaveRequestById(id);
+                if (response.Success)
+                {
+                    await InvokeAsync(StateHasChanged);
+                }
+                else
+                {
+                    Message = response.Message;
+                }
             }
+          
         }
 
     }
