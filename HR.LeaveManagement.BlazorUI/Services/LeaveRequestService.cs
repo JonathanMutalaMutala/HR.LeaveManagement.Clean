@@ -92,8 +92,6 @@ namespace HR.LeaveManagement.BlazorUI.Services
             var leaveRequests = await _client.LeaveRequestAllAsync(isLoggedInUser: true);
             ICollection<LeaveAllocationDto> allocations = await _client.LeaveAllocationAllAsync(isLoggedInUser: true);
 
-            var test = _mapper.Map<ICollection<LeaveAllocationVM>>(allocations);
-
             var model = new EmployeeLeaveRequestViewVM
             {
                 leaveAllocationVMs = _mapper.Map<List<LeaveAllocationVM>>(allocations),
