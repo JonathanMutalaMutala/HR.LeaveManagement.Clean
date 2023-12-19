@@ -16,6 +16,14 @@ namespace HR.LeaveManagement.BlazorUI.Services
             _authenticationStateProvider = authenticationStateProvider;
         }
 
+
+        /// <summary>
+        /// Cette methode envoie les identifiant de connection à L'API et appel la methode permettant de marker le user comme authentifier  
+        /// Sinon envoie l'Exception envoyer par L'API 
+        /// </summary>
+        /// <param name="username">Representante le username de l'utilisateur </param>
+        /// <param name="password">Represente le mot de passe de l'utilisateur </param>
+        /// <returns></returns>
         public async Task<bool> AuthenticateAsync(string username, string password)
         {
             bool authenticated = false;
@@ -42,10 +50,6 @@ namespace HR.LeaveManagement.BlazorUI.Services
 
                 return authenticated;
             }
-
-            
-
-
         }
 
         public async Task Logout()
